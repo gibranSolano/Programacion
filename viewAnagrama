@@ -22,7 +22,7 @@ import javax.swing.JTextField;
  *
  * @author DELL-598
  */
-public class VentanaAnagra implements ActionListener{
+public class viewAnagrama implements ActionListener{
     
     
     
