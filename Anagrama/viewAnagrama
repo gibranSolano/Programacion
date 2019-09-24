@@ -108,8 +108,8 @@ public void muestraVentana(){
             double var5 = Double.parseDouble(txtFldE.getText());
             
             if(var1<=50 && var2<=50 && var3<=50 && var4<=50  && var5<=50 ){
-                 txtarea.setText(imprime(var1)+imprime(var2)+imprime(var3)+
-                   imprime(var4)+imprime(var5));
+                 txtarea.setText(pintaTexto(var1)+pintaTexto(var2)+pintaTexto(var3)+
+                   pintaTexto(var4)+pintaTexto(var5));
             }else{
                JOptionPane.showMessageDialog(null, "Los valores deben ser menores que: 50"); 
             }
@@ -129,12 +129,14 @@ public void muestraVentana(){
         
         }
 
-private String imprime(double var){
+private String pintaTexto(double var){
     
      String text="";
-            for(int x=0; x<var ; x++)
+     int cont=0;
+            while (cont<var)
             {
                text= text + "*";
+               cont++;
             }      
     return text+"\n";
 } 
