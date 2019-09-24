@@ -1,0 +1,163 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package TIS2_2;
+
+
+
+import TIS2_2.Operacion;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+/**
+ *
+ * @author DELL-598
+ */
+public class VentanaCalc implements ActionListener{
+    
+    
+	   private JLabel lb1A ;
+	   private JLabel lb1B ;
+	   private JLabel lb1C ;
+
+	   
+    
+   private JTextField txtFldA ;
+   private JTextField txtFldB ;
+   private JTextField txtFldC ;
+
+   private JTextArea txtarea;
+    
+    
+
+public void muestraVentana(){
+//Ventana
+    JFrame ventana = new JFrame("Calculadora"); 
+    ventana.setSize(500, 300);
+    ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    
+    
+    //contenedor 1
+    JPanel pnl1 = new JPanel();
+    lb1A = new JLabel("Calculadora");
+    pnl1.add(lb1A);
+    
+    
+    
+   
+ 
+
+     //contenedor 2
+    JPanel pnl2 = new JPanel();
+    txtFldA = new JTextField(10);
+    txtFldB = new JTextField(10);
+    txtFldC = new JTextField(10);
+    lb1B = new JLabel("A=");
+    pnl2.add(lb1B);
+    pnl2.add(txtFldA);
+    lb1B = new JLabel("B=");
+    pnl2.add(lb1B);
+    pnl2.add(txtFldB);
+    lb1C = new JLabel("Resultado=");
+    pnl2.add(lb1C);
+    pnl2.add(txtFldC);
+
+    
+    
+    
+    
+   
+   
+    
+    
+    //contenedor 3
+    JPanel pnl3 = new JPanel();
+    pnl3.setLayout(new GridLayout(4,1));
+    JButton btnSum = new JButton("Suma");
+    btnSum.addActionListener(this);
+    JButton btnRes = new JButton("Resta");
+    btnRes.addActionListener(this);
+    JButton btnDiv = new JButton("Division");
+    btnDiv.addActionListener(this);
+    JButton btnMult = new JButton("Multiplicacion");
+    btnMult.addActionListener(this);
+
+    pnl3.add(btnSum);
+    pnl3.add(btnRes);
+    pnl3.add(btnDiv);
+    pnl3.add(btnMult);
+    
+    
+    JPanel pnl4 = new JPanel();
+    JButton btnClose = new JButton("Cerrar");
+    btnClose.addActionListener(this);
+    pnl4.add(btnClose);
+    //Panel Principal
+    JPanel mainPanel = new JPanel();
+    mainPanel.setLayout(new BorderLayout(3, 3));
+    
+    
+    mainPanel.add(pnl1,BorderLayout.NORTH);
+    mainPanel.add(pnl2, BorderLayout.CENTER);
+    mainPanel.add(pnl3, BorderLayout.EAST);
+    mainPanel.add(pnl4, BorderLayout.SOUTH);
+
+    ventana.setContentPane(mainPanel);
+    ventana.setVisible(true);
+}
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        
+        if( ((JButton)e.getSource()).getText().equals("Cerrar")){
+            System.exit(0);
+        }else{
+        try{
+  
+        	double a = Double.parseDouble(txtFldA.getText());
+            double b = Double.parseDouble(txtFldB.getText());
+        	
+        	
+        	  if( ((JButton)e.getSource()).getText().equals("Suma")){
+        		  txtFldC.setText(Double.toString(Operacion.suma(a,b)));
+        		  
+        	}  else if ( ((JButton)e.getSource()).getText().equals("Resta")) {
+        		txtFldC.setText(Double.toString(Operacion.resta(a,b)));
+        	} else if  ( ((JButton)e.getSource()).getText().equals("Multiplicacion")) {
+        		txtFldC.setText(Double.toString(Operacion.multiplica(a,b)));
+        	} else if( ((JButton)e.getSource()).getText().equals("Division")) {
+        		txtFldC.setText(Double.toString(Operacion.div(a,b)));
+        	}
+            
+            
+            
+          
+
+
+            
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        }
+        
+        }
+
+
+
+
+
+
