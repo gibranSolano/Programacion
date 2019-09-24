@@ -127,19 +127,18 @@ public void muestraVentana(){
         }else{
         try{
   
-        	double a = Double.parseDouble(txtFldA.getText());
+       	    double a = Double.parseDouble(txtFldA.getText());
             double b = Double.parseDouble(txtFldB.getText());
         	
         	
         	  if( ((JButton)e.getSource()).getText().equals("Suma")){
-        		  txtFldC.setText(Double.toString(Operacion.suma(a,b)));
-        		  
+        		  txtFldC.setText(Double.toString(a+b));
         	}  else if ( ((JButton)e.getSource()).getText().equals("Resta")) {
-        		txtFldC.setText(Double.toString(Operacion.resta(a,b)));
+        		txtFldC.setText(Double.toString(a-b));
         	} else if  ( ((JButton)e.getSource()).getText().equals("Multiplicacion")) {
-        		txtFldC.setText(Double.toString(Operacion.multiplica(a,b)));
+        		txtFldC.setText(Double.toString(a*b));
         	} else if( ((JButton)e.getSource()).getText().equals("Division")) {
-        		txtFldC.setText(Double.toString(Operacion.div(a,b)));
+        		txtFldC.setText(Double.toString(a/b));
         	}
             
             
