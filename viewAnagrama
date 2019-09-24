@@ -1,0 +1,144 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package TIS2_1;
+
+
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+/**
+ *
+ * @author DELL-598
+ */
+public class VentanaAnagra implements ActionListener{
+    
+    
+    
+    
+   private JTextField txtFldA ;
+   private JTextField txtFldB ;
+   private JTextField txtFldC ;
+   private JTextField txtFldD;
+   private JTextField txtFldE;
+   
+   private JTextArea txtarea;
+    
+    
+
+public void muestraVentana(){
+//Ventana
+    JFrame ventana = new JFrame("HISTOGRAMA"); 
+    ventana.setSize(500, 300);
+    ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    
+    
+    //contenedor 1
+    JPanel pnl1 = new JPanel();
+     txtFldA = new JTextField(5);
+     txtFldB = new JTextField(5);
+     txtFldC = new JTextField(5);
+     txtFldD = new JTextField(5);
+     txtFldE = new JTextField(5);       
+    
+    pnl1.add(txtFldA);
+    pnl1.add(txtFldB);
+    pnl1.add(txtFldC);
+    pnl1.add(txtFldD);
+    pnl1.add(txtFldE);
+     
+
+     //contenedor 2
+    JPanel pnl2 = new JPanel();
+    JButton btnRes = new JButton("Graficar");
+     btnRes.addActionListener(this);
+        txtarea = new JTextArea(10,30);
+   
+        pnl2.add(txtarea);
+        pnl2.add(btnRes);
+       
+   
+    
+    
+    //contenedor 2
+    JPanel pnl3 = new JPanel();
+    
+    JButton btnCerrar = new JButton("Cerrar");
+    btnCerrar.addActionListener(this);
+    
+
+    pnl3.add(btnCerrar);
+    
+    //Panel Principal
+    JPanel mainPanel = new JPanel();
+    mainPanel.add(pnl1);
+    mainPanel.add(pnl2);
+    mainPanel.add(pnl3);
+    
+
+    ventana.setContentPane(mainPanel);
+    ventana.setVisible(true);
+}
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        
+        if( ((JButton)e.getSource()).getText().equals("Cerrar")){
+            System.exit(0);
+        }else{
+        try{
+  
+          
+            double var1 = Double.parseDouble(txtFldA.getText());
+            double var2 = Double.parseDouble(txtFldB.getText());
+            double var3 = Double.parseDouble(txtFldC.getText());
+            double var4 = Double.parseDouble(txtFldD.getText());
+            double var5 = Double.parseDouble(txtFldE.getText());
+            
+            if(var1<=50 && var2<=50 && var3<=50 && var4<=50  && var5<=50 ){
+                 txtarea.setText(imprime(var1)+imprime(var2)+imprime(var3)+
+                   imprime(var4)+imprime(var5));
+            }else{
+               JOptionPane.showMessageDialog(null, "Los valores deben ser menores que: 50"); 
+            }
+            
+            
+            
+            
+          
+
+
+            
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        }
+        
+        }
+
+private String imprime(double var){
+    
+     String text="";
+            for(int x=0; x<var ; x++)
+            {
+               text= text + "*";
+            }      
+    return text+"\n";
+} 
+
+
+
+}
